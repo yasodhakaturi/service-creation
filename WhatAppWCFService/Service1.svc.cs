@@ -6,6 +6,8 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using WhatsAppApi;
+using WhatsAppPort;
+using WhatAppWCFService;
 
 namespace WhatAppWCFService
 {
@@ -33,11 +35,28 @@ namespace WhatAppWCFService
 
         string IService1.RequestCode(string number, out string password, string method)
         {
-            method = "sms";
+            //method = "sms";
             if (WhatsAppApi.Register.WhatsRegisterV2.RequestCode(number, out password, method))
             return password;
             else
                 return null;
+        }
+        string IService1.RegisterCode(string number, string code)
+        {
+            
+            string pwd = WhatsAppApi.Register.WhatsRegisterV2.RegisterCode(number, code);
+
+            return pwd;
+        }
+        string IService1.CheckLogin(string number, string password)
+        {
+
+            if (WhatsAppPort.frmLogin.CheckLogin(number, password))
+                return "success";
+            else
+                return "fail";
+
+
         }
     }
 }

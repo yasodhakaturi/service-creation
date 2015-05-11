@@ -85,6 +85,10 @@
       <Project>{3fc9096a-c4d2-40c7-be7b-d98acab3bd2b}</Project>
       <Name>WhatsAppApi</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WhatsAppPort\WhatsAppPort.csproj">
+      <Project>{91d9d263-bfb7-4c31-890f-4a42f734670e}</Project>
+      <Name>WhatsAppPort</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

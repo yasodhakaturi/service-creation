@@ -18,7 +18,7 @@ namespace WhatsAppPort
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (!this.CheckLogin(this.textBoxPhone.Text, this.textBoxPass.Text))
+            if (!CheckLogin(this.textBoxPhone.Text, this.textBoxPass.Text))
             {
                 MessageBox.Show(this, "Login failed", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -34,14 +34,14 @@ namespace WhatsAppPort
             }
         }
 
-        private bool CheckLogin(string user, string pass)
+        public static bool CheckLogin(string user, string pass)
         {
             try
             {
                 if (string.IsNullOrEmpty(user) || string.IsNullOrEmpty(pass))
                     return false;
-
-                WhatSocket.Create(user, pass, this.textBoxNick.Text, true);
+                
+                WhatSocket.Create(user, pass,textBoxNick.Text, true);
                 WhatSocket.Instance.Connect();
                 WhatSocket.Instance.Login();
                 //check login status

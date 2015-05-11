@@ -26,6 +26,24 @@ namespace WhatAppWCFService
             UriTemplate = "RequestCode?number={number}&method={method}")]
         string RequestCode(string number,out string password,string method);
 
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Wrapped,
+            UriTemplate = "RegisterCode?number={number}&code={code}")]
+        string RegisterCode(string number, string code);
+
+         [OperationContract]
+        [WebInvoke(Method = "GET",
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Wrapped,
+            UriTemplate = "CheckLogin?number={number}&password={password}")]
+        string CheckLogin(string number, string password);
+
+
+
+       
+
 
         // TODO: Add your service operations here
     }

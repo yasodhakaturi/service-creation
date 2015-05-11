@@ -31,6 +31,7 @@ namespace WhatsAppPort
 
         private void btnCodeRequest_Click(object sender, EventArgs e)
         {
+            //WhatAppService.Service1Client svc = new WhatAppService.Service1Client();
             if (!String.IsNullOrEmpty(this.txtPhoneNumber.Text))
             {
                 string method = "sms";
