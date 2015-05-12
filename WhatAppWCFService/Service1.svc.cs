@@ -5,9 +5,29 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
+using System.ServiceModel.Activation;
+using System.IO;
+using System.Text.RegularExpressions;
+using System.Web;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Net;
+using System.Drawing.Imaging;
+//using AntsCode.Util;
+using System.Configuration;
+using System.Collections;
+using Newtonsoft.Json.Converters;
+using System.Net.Mail;
 using WhatsAppApi;
 using WhatsAppPort;
 using WhatAppWCFService;
+using System.Windows.Forms;
+
+
+
 
 namespace WhatAppWCFService
 {
@@ -37,7 +57,7 @@ namespace WhatAppWCFService
         {
             //method = "sms";
             if (WhatsAppApi.Register.WhatsRegisterV2.RequestCode(number, out password, method))
-            return password;
+            return  password;
             else
                 return null;
         }
@@ -48,15 +68,42 @@ namespace WhatAppWCFService
 
             return pwd;
         }
-        //string IService1.CheckLogin(string number, string password)
-        //{
+        public string CheckLogin(string number, string password)
+        {
 
-        //    if(WhatsAppPort.frmLogin.CheckLogin(number, password))
-        //        return "success";
-        //    else
-        //        return "fail";
+            if (WhatsAppPort.frmLogin.CheckLogin(number, password))
+                return "success";
+            else
+                return "fail";
+         }
 
+        public string UserExists(string number, string NickName)
+          
+         {
 
-        //}
+           var user = User.UserExists(number, NickName);
+
+           return JsonConvert.SerializeObject(user);
+          }
+        
+        
+        public string SendMessage(string number, string Message)
+        {
+
+         string fulljid = WhatsAppApi.ApiBase.GetJID(number);
+
+            try
+            {
+                //WhatSocket.Instance.SendMessage(fulljid, Message);
+
+                string key = WhatsAppApi.WhatsApp.ISendMessage(fulljid, Message);
+                return "Messsage Sent successfully";
+            }
+            catch
+            {
+                return "Message Delivary Failure";
+            }
+                
+        }
     }
 }

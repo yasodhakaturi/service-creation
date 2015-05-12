@@ -36,12 +36,27 @@ namespace WhatAppWCFService
             UriTemplate = "RegisterCode?number={number}&code={code}")]
         string RegisterCode(string number, string code);
 
-        // [OperationContract]
-        //[WebInvoke(Method = "GET",
-        //    ResponseFormat = WebMessageFormat.Json,
-        //    BodyStyle = WebMessageBodyStyle.Wrapped,
-        //    UriTemplate = "CheckLogin?number={number}&password={password}")]
-        //string CheckLogin(string number, string password);
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Wrapped,
+            UriTemplate = "CheckLogin?number={number}&password={password}")]
+        string CheckLogin(string number, string password);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Wrapped,
+            UriTemplate = "UserExists?number={number}&NickName={NickName}")]
+        string UserExists(string number, string NickName);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Wrapped,
+            UriTemplate = "SendMessage?number={number}&Message={Message}")]
+        string SendMessage(string number, string Message);
+
 
 
 

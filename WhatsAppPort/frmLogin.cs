@@ -34,14 +34,15 @@ namespace WhatsAppPort
             }
         }
 
-        public  bool CheckLogin(string user, string pass)
+        public static bool CheckLogin(string user, string pass)
         {
             try
             {
                 if (string.IsNullOrEmpty(user) || string.IsNullOrEmpty(pass))
                     return false;
-                
-                WhatSocket.Create(user, pass,textBoxNick.Text, true);
+
+                WhatsAppPort.frmLogin t=new WhatsAppPort.frmLogin();
+                WhatSocket.Create(user, pass, t.textBoxNick.Text, true);
                 WhatSocket.Instance.Connect();
                 WhatSocket.Instance.Login();
                 //check login status

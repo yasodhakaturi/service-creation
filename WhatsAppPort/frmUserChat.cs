@@ -50,7 +50,7 @@ namespace WhatsAppPort
         {
             if (this.txtBxSentText.Text.Length == 0)
                 return;
-
+            
             WhatSocket.Instance.SendMessage(this.user.WhatsUser.GetFullJid(), txtBxSentText.Text);
             this.AddNewText(this.user.UserName, txtBxSentText.Text);
             txtBxSentText.Clear();

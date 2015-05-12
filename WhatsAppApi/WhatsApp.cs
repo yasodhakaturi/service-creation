@@ -21,6 +21,9 @@ namespace WhatsAppApi
     /// </summary>
     public class WhatsApp : WhatsSendBase
     {
+        public WhatsApp()
+        {
+        }
         public WhatsApp(string phoneNum, string imei, string nick, bool debug = false, bool hidden = false)
         {
             this._constructBase(phoneNum, imei, nick, debug, hidden);
@@ -33,6 +36,13 @@ namespace WhatsAppApi
             return tmpMessage.identifier_key.ToString();
         }
 
+        public static string ISendMessage(string to, string txt)
+        {
+            var tmpMessage = new FMessage(GetJID(to), true) { data = txt };
+            WhatsAppApi.WhatsApp wa = new WhatsAppApi.WhatsApp();
+            wa.SendMessage(tmpMessage, wa.hidden);
+            return tmpMessage.identifier_key.ToString();
+        }
         public void SendMessageVcard(string to, string name, string vcard_data)
         {
             var tmpMessage = new FMessage(GetJID(to), true) { data = vcard_data, media_wa_type = FMessage.Type.Contact, media_name = name };
