@@ -34,7 +34,7 @@ namespace WhatsAppPort
             }
         }
 
-        public static bool CheckLogin(string user, string pass)
+        public  bool CheckLogin(string user, string pass)
         {
             try
             {

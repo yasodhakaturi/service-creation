@@ -14,7 +14,8 @@ namespace WhatAppWCFService
     {
 
         [OperationContract]
-        string GetData(int value);
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "GetData/{value}")]
+        string GetData(string value);
 
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
@@ -23,8 +24,10 @@ namespace WhatAppWCFService
         [WebInvoke(Method = "GET",
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Wrapped,
-            UriTemplate = "RequestCode?number={number}&method={method}")]
-        string RequestCode(string number,out string password,string method);
+            UriTemplate = "RequestCode/{number}/{method}")]
+        string RequestCode(string number, out string password, string method);
+
+        //UriTemplate = "RequestCode?number={number}&method={method}")
 
         [OperationContract]
         [WebInvoke(Method = "GET",
@@ -33,12 +36,12 @@ namespace WhatAppWCFService
             UriTemplate = "RegisterCode?number={number}&code={code}")]
         string RegisterCode(string number, string code);
 
-         [OperationContract]
-        [WebInvoke(Method = "GET",
-            ResponseFormat = WebMessageFormat.Json,
-            BodyStyle = WebMessageBodyStyle.Wrapped,
-            UriTemplate = "CheckLogin?number={number}&password={password}")]
-        string CheckLogin(string number, string password);
+        // [OperationContract]
+        //[WebInvoke(Method = "GET",
+        //    ResponseFormat = WebMessageFormat.Json,
+        //    BodyStyle = WebMessageBodyStyle.Wrapped,
+        //    UriTemplate = "CheckLogin?number={number}&password={password}")]
+        //string CheckLogin(string number, string password);
 
 
 

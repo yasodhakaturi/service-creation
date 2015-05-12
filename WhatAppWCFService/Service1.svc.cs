@@ -15,7 +15,7 @@ namespace WhatAppWCFService
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service1 : IService1
     {
-        public string GetData(int value)
+        public string GetData(string value)
         {
             return string.Format("You entered: {0}", value);
         }
@@ -33,7 +33,7 @@ namespace WhatAppWCFService
             return composite;
         }
 
-        string IService1.RequestCode(string number, out string password, string method)
+        public string RequestCode(string number, out string password, string method)
         {
             //method = "sms";
             if (WhatsAppApi.Register.WhatsRegisterV2.RequestCode(number, out password, method))
@@ -41,22 +41,22 @@ namespace WhatAppWCFService
             else
                 return null;
         }
-        string IService1.RegisterCode(string number, string code)
+        public string RegisterCode(string number, string code)
         {
             
             string pwd = WhatsAppApi.Register.WhatsRegisterV2.RegisterCode(number, code);
 
             return pwd;
         }
-        string IService1.CheckLogin(string number, string password)
-        {
+        //string IService1.CheckLogin(string number, string password)
+        //{
 
-            if (WhatsAppPort.frmLogin.CheckLogin(number, password))
-                return "success";
-            else
-                return "fail";
+        //    if(WhatsAppPort.frmLogin.CheckLogin(number, password))
+        //        return "success";
+        //    else
+        //        return "fail";
 
 
-        }
+        //}
     }
 }
