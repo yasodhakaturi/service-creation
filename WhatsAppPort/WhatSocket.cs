@@ -7,7 +7,7 @@ namespace WhatsAppPort
 {
     public class WhatSocket
     {
-        private static WhatsAppApi.WhatsApp _instance;
+        public static WhatsAppApi.WhatsApp _instance;
 
         public static WhatsAppApi.WhatsApp Instance
         {
