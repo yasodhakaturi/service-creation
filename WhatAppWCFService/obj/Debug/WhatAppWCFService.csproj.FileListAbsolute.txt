@@ -1,0 +1,16 @@
+E:\dotnet\service-creation\WhatAppWCFService\bin\WhatAppWCFService.dll
+E:\dotnet\service-creation\WhatAppWCFService\bin\WhatAppWCFService.pdb
+E:\dotnet\service-creation\WhatAppWCFService\bin\WhatsAppApi.dll
+E:\dotnet\service-creation\WhatAppWCFService\bin\WhatsAppPort.exe
+E:\dotnet\service-creation\WhatAppWCFService\bin\WhatsAppApi.pdb
+E:\dotnet\service-creation\WhatAppWCFService\bin\WhatsAppPort.pdb
+E:\dotnet\service-creation\WhatAppWCFService\obj\Debug\WhatAppWCFService.csprojResolveAssemblyReference.cache
+E:\dotnet\service-creation\WhatAppWCFService\obj\Debug\WhatAppWCFService.dll
+E:\dotnet\service-creation\WhatAppWCFService\obj\Debug\WhatAppWCFService.pdb
+E:\dotnet\service-creation\WhatAppWCFService\bin\NEventStore.dll
+E:\dotnet\service-creation\WhatAppWCFService\bin\NEventStore.Serialization.Json.dll
+E:\dotnet\service-creation\WhatAppWCFService\bin\Newtonsoft.Json.dll
+E:\dotnet\service-creation\WhatAppWCFService\bin\NEventStore.pdb
+E:\dotnet\service-creation\WhatAppWCFService\bin\NEventStore.xml
+E:\dotnet\service-creation\WhatAppWCFService\bin\NEventStore.Serialization.Json.pdb
+E:\dotnet\service-creation\WhatAppWCFService\bin\Newtonsoft.Json.xml
