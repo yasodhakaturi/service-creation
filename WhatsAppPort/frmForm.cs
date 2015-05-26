@@ -52,7 +52,7 @@ namespace WhatsAppPort
                 if (tmpAddUser.DialogResult != DialogResult.OK)
                     return;
                 if(tmpAddUser.Tag == null || !(tmpAddUser.Tag is User))
-                    return;
+                    return; 
 
                 var tmpUser = tmpAddUser.Tag as User;
                 this.userList.Add(tmpUser.PhoneNumber, tmpUser);
