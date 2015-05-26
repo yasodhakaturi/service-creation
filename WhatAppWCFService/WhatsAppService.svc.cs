@@ -93,17 +93,17 @@ namespace WhatAppWCFService
 
            return JsonConvert.SerializeObject(user);
           }
-        
-        
-        public string SendMessage(string number, string password , string Message)
+
+
+        public string SendMessage(string Sender, string Receiver, string password, string Message)
         {
                     //WhatsAppApi.WhatsApp _instance;
-         string fulljid = WhatsAppApi.ApiBase.GetJID(number);
+            string fulljid = WhatsAppApi.ApiBase.GetJID(Receiver);
 
             try
             {
 
-                CheckLogin(number, password);
+                CheckLogin(Sender, password);
                 WhatsAppPort.WhatSocket.Instance.SendMessage(fulljid, Message);
 
                     return "Messsage Sent successfully";

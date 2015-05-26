@@ -54,8 +54,8 @@ namespace WhatAppWCFService
         [WebInvoke(Method = "GET",
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Wrapped,
-            UriTemplate = "SendMessage?number={number}&password={password}&Message={Message}")]
-        string SendMessage(string number, string password,string Message);
+            UriTemplate = "SendMessage?Sender={Sender}&Receiver={Receiver}&password={password}&Message={Message}")]
+        string SendMessage(string Sender,string Receiver, string password,string Message);
 
         
 [OperationContract]
