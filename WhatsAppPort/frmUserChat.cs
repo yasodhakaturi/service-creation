@@ -10,6 +10,7 @@ using WhatsAppApi.Account;
 using WhatsAppApi.Helper;
 using WhatsAppApi.Parser;
 using WhatsAppApi.Response;
+using System.IO;
 
 namespace WhatsAppPort
 {
@@ -80,6 +81,57 @@ namespace WhatsAppPort
             }
             WhatSocket.Instance.SendPaused(this.user.WhatsUser.GetFullJid());
             this.timerTyping.Stop();
+        }
+
+        private void frmUserChat_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+
+        private void btnsendfile_Click(object sender, EventArgs e)
+        {
+           
+    OpenFileDialog dialog = new OpenFileDialog();
+    //dialog.Filter = "Text files | *.txt"; // file types, that will be allowed to upload
+    dialog.Multiselect = false; // allow/deny user to upload more than one file at a time
+    if (dialog.ShowDialog() == DialogResult.OK) // if user clicked OK
+    {
+        String path = dialog.FileName; // get name of file
+        string type = path.Substring(path.Length - 3);
+        if (type.Contains("JPEG") || type.Contains( "GIF" )|| type.Contains("PNG"))
+           
+        {
+        System.Drawing.Image image = System.Drawing.Image.FromFile(path);
+        //yasodha
+        System.IO.MemoryStream ms = new System.IO.MemoryStream();
+        image.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
+        byte[] imginbytes = ms.ToArray();
+        WhatsAppApi.WhatsApp wa = new WhatsAppApi.WhatsApp();
+        //string to = "919177556688";
+         WhatsAppApi.WhatsApp.ImageType imp=new  WhatsAppApi.WhatsApp.ImageType();
+         WhatSocket.Instance.SendMessageImage(this.user.WhatsUser.GetFullJid(), imginbytes, imp);
+        }
+        else
+        {
+            
+            byte[] videoinbytes = null;
+            FileStream fs = new FileStream(path,
+                                           FileMode.Open,
+                                           FileAccess.Read);
+            BinaryReader br = new BinaryReader(fs);
+            long numBytes = new FileInfo(path).Length;
+            videoinbytes = br.ReadBytes((int)numBytes);
+            WhatsAppApi.WhatsApp.VideoType vid = new WhatsAppApi.WhatsApp.VideoType();
+            WhatSocket.Instance.SendMessageVideo(this.user.WhatsUser.GetFullJid(), videoinbytes, vid);
+        }
+    
+}
         }
     }
 }

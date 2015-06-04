@@ -34,6 +34,10 @@
             this.btnSend = new System.Windows.Forms.Button();
             this.lblIsTyping = new System.Windows.Forms.Label();
             this.timerTyping = new System.Windows.Forms.Timer(this.components);
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnsendfile = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtBxChat
@@ -88,18 +92,40 @@
             this.timerTyping.Interval = 2000;
             this.timerTyping.Tick += new System.EventHandler(this.timerTyping_Tick);
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // btnsendfile
+            // 
+            this.btnsendfile.Location = new System.Drawing.Point(372, 320);
+            this.btnsendfile.Name = "btnsendfile";
+            this.btnsendfile.Size = new System.Drawing.Size(75, 23);
+            this.btnsendfile.TabIndex = 2;
+            this.btnsendfile.Text = "upload file";
+            this.btnsendfile.UseVisualStyleBackColor = true;
+            this.btnsendfile.Click += new System.EventHandler(this.btnsendfile_Click);
+            // 
             // frmUserChat
             // 
             this.AcceptButton = this.btnSend;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(540, 355);
+            this.Controls.Add(this.btnsendfile);
             this.Controls.Add(this.lblIsTyping);
             this.Controls.Add(this.btnSend);
             this.Controls.Add(this.txtBxSentText);
             this.Controls.Add(this.txtBxChat);
             this.Name = "frmUserChat";
             this.Text = "Benutzerchat";
+            this.Load += new System.EventHandler(this.frmUserChat_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -112,5 +138,9 @@
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.Label lblIsTyping;
         private System.Windows.Forms.Timer timerTyping;
+        public static System.Windows.Forms.FileDialog fileupload;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button btnsendfile;
     }
 }
