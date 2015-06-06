@@ -104,7 +104,8 @@ namespace WhatsAppPort
     {
         String path = dialog.FileName; // get name of file
         string type = path.Substring(path.Length - 3);
-        if (type.Contains("JPEG") || type.Contains( "GIF" )|| type.Contains("PNG"))
+        type = type.ToUpper();
+        if (type.Contains("JPG") || type.Contains( "GIF" )|| type.Contains("PNG"))
            
         {
         System.Drawing.Image image = System.Drawing.Image.FromFile(path);
